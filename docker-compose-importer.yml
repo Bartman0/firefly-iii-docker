@@ -55,7 +55,7 @@ services:
     image: alpine
     container_name: firefly_iii_cron
     restart: always
-    command: sh -c "echo \"0 3 * * * wget -qO- http://app:8080/api/v1/cron/682a4c6dce0e036cc9f2f6562d645a3f\" | crontab - && crond -f -L /dev/stdout"
+    command: sh -c "echo \"0 3 * * * wget -qO- http://app:8080/api/v1/cron/7a4a9ef512935310188ce52a843d9e30\" | crontab - && crond -f -L /dev/stdout"
     networks:
       - firefly_iii
 volumes:
