@@ -1,2 +1,2 @@
 #!/bin/bash
-podman-compose -f docker-compose-importer.yml up -d
+docker-compose -f docker-compose-importer.yml up -d
