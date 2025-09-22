@@ -10,7 +10,7 @@
 
 services:
   app:
-    image: fireflyiii/core:latest
+    image: fireflyiii/core:version-6.3.2
     hostname: app
     container_name: firefly_iii_core
     networks:
@@ -20,7 +20,7 @@ services:
       - firefly_iii_upload:/var/www/html/storage/upload
     env_file: .env
     ports:
-      - '8080:8080'
+      - "8080:8080"
     depends_on:
       - db
 
@@ -33,18 +33,20 @@ services:
       - firefly_iii
     restart: unless-stopped
     env_file: .db.env
+    ports:
+      - "3306:3306"
     volumes:
       - firefly_iii_db:/var/lib/mysql
 
   importer:
-    image: fireflyiii/data-importer:latest
+    image: fireflyiii/data-importer:version-1.8.0
     hostname: importer
     restart: always
     container_name: firefly_iii_importer
     networks:
       - firefly_iii
     ports:
-      - '8081:8080'
+      - "8081:8080"
     depends_on:
       - app
     env_file: .importer.env
@@ -62,10 +64,9 @@ services:
       - firefly_iii
 
 volumes:
-   firefly_iii_upload:
-   firefly_iii_db:
+  firefly_iii_upload:
+  firefly_iii_db:
 
 networks:
   firefly_iii:
     driver: bridge
-
